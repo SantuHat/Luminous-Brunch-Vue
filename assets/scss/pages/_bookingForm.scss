@@ -1,0 +1,105 @@
+.form-border {
+  background-color: #f4e9e2;
+  padding: 5vmin;
+}
+.row {
+  // width: 100%;
+  // .form-label {
+  //   width: 60%;
+  //   padding-left: 1rem;
+  // }
+  .form-control {
+    width: 49%;
+  }
+  .time-picker {
+    width: 49%;
+  }
+  .form-text {
+    display: flex;
+  }
+  .act-btn {
+    font-size: 3vmin;
+  }
+}
+.form-label {
+  width: 60%;
+  padding-left: 1rem;
+  font-size: 4vmin;
+  color: #343a40;
+}
+.form-control {
+  font-size: 4vmin;
+}
+.form-select {
+  font-size: 4vmin;
+}
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+  position: relative;
+  align-items: center;
+  margin-bottom: 15vmin;
+  .line {
+    height: 2px;
+    width: 44%;
+    background-color: #693b28;
+  }
+  .step {
+    width: 5vmin;
+    height: 5vmin;
+    background-color: #b58a78;
+    color: #8b8b8b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-direction: column;
+    span {
+      width: 21vmin;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-top: 14vh;
+      font-size: 5vmin;
+    }
+  }
+  .step.active {
+    background-color: #693b28;
+    color: #343434;
+  }
+}
+
+.confirm-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 5vmin;
+}
+.form-content-confirm {
+  display: flex;
+  flex-direction: column;
+  font-size: 5vmin;
+  .booking-Contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+// .sumbit-btn-control {
+//   flex-direction: column;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+// }
+.form-btn {
+  width: 8vw;
+}
+.form-btn-group {
+  display: flex;
+  justify-content: space-evenly;
+}

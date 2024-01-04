@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <%- include('./layout/header'); -%>
+      <div class="container d-flex justify-content-center mt-10 mb-10">
+        <div class="row w-100 form-border d-flex justify-content-center">
+          <div class="step-indicator">
+            <div class="step" id="step1"><span>填寫預訂</span></div>
+            <div class="line"></div>
+            <div class="step" id="step2"><span>資料確認</span></div>
+            <div class="line"></div>
+            <div class="step active" id="step3"><span>訂位完成</span></div>
+          </div>
+          <div class="form-content-confirm"></div>
+        </div>
+      </div>
+      <%- include('./layout/footer'); -%>
+    </main>
+  </body>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script type="module" src="../main.js"></script>
+</html>

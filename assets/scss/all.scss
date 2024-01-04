@@ -1,0 +1,20 @@
+@import '../../node_modules/bootstrap/scss/functions';
+@import './utils/variables';
+@import './utils/utilities';
+@import './mixin/mixin';
+
+@import './vendors/vendors';
+
+@import './layout/header.scss';
+@import './layout/footer.scss';
+
+@import './pages/index.scss';
+@import './pages/menu.scss';
+@import './pages/login.scss';
+@import'./pages/password.scss';
+
+@import '../../node_modules/bootstrap';
+@import './pages/news.scss';
+@import './pages/newsContent';
+@import './pages/aboutUs';
+@import './pages/bookingForm';

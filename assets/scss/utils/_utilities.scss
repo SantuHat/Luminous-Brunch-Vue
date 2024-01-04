@@ -1,0 +1,37 @@
+// 使font-size斷點有效果
+
+$utilities: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$utilities: map-merge(
+  (
+    'font-size': (
+      responsive: true,
+      // *custom
+      rfs: true,
+      property: font-size,
+      class: fs,
+      values: $font-sizes,
+    ),
+  ),
+  $utilities
+);
+
+.fw-500 {
+  font-weight: 500;
+}
+.border-bottom-1 {
+  @media (max-width: 992px) {
+    border-bottom: 1px solid $gray-200;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.fs-48 {
+  font-size: 48px;
+}
+.box-shadow-gray-300{
+  box-shadow: 1px 1px 3px $gray-300;
+}

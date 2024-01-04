@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body class="d-lg-flex flex-column vh-100">
+  <%- include('./layout/header'); -%>
+  <div class="container flex-grow-1 mt-9 mb-9">
+    <h2 class="mb-7 text-center">訂位資訊</h2>
+    <table class="border border-gray box-shadow-gray-300 mx-auto">
+      <thead class="bg-gray text-center">
+        <tr>
+          <th class="px-lg-6 py-lg-4">訂位編號</th>
+          <th class="px-lg-6 py-lg-4">預約日期</th>
+          <th class="px-lg-6 py-lg-4">預約時間</th>
+          <th class="px-lg-6 py-lg-4">用餐人數</th>
+          <th class="px-lg-6 py-lg-4">訂位時間</th>
+          <th class="px-lg-6 py-lg-4">姓名</th>
+          <th class="px-lg-6 py-lg-4">手機號碼</th>
+          <th class="px-lg-6 py-lg-4">信箱</th>
+          <th class="px-lg-6 py-lg-4"></th>
+        </tr>
+      </thead>
+      <tbody class="js-tbody">
+        <!-- JS渲染 -->
+      </tbody>
+    </table>
+  </div>
+  <%- include('./layout/footer'); -%>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js
+    "></script>
+    <link
+      href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css
+    "
+      rel="stylesheet"
+    />
+  <script type="module" src="../main.js"></script>
+</body>
+</html>

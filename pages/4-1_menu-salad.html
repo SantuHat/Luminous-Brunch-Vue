@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜單分頁</title>
+</head>
+<body>
+<%- include('./layout/header'); -%>
+  <div class="py-6">
+    <div class="container">
+        <h1 id="menuTitle" class="display-1 text-center text-primary fw-bolder font-Caveat mb-auto">| Salad |</h1>
+    </div>
+  </div>
+  <!-- 菜單品項選單 -->
+  <%- include('./layout/menuList'); -%>
+  <div class="bg-gray py-6">
+    <div class="container">
+        <div class="menu-container row flex-wrap">
+        <!-- JS渲染菜單品項 -->
+            
+        </div>
+    </div> 
+  </div>
+  
+
+<%- include('./layout/footer'); -%>
+
+  
+ <script type="module" src="../main.js"></script>
+ <script>
+    renderMenu(menuData[param1Value]);
+ </script>
+</body>
+</html>
