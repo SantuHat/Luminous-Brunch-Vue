@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <div class="mx-auto px-3 w-75 d-flex ">
+      <a class="navbar-brand bg-white rounded-pill" href="#"><img src="/assets/images/Logo-sm.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">產品</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">訂單</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">優惠券</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">登出</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<div class="text-end me-3 mt-4">
+    <button class="btn btn-primary" type="button">產品新增</button>
+</div>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th width="120">分類</th>
+            <th width="120">產品名稱</th>
+            <th width="120">原價</th>
+            <th width="120">售價</th>
+            <th width="100">是否啟用</th>
+            <th width="200">編輯</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>分類</td>
+          <td>標題</td>
+          <td class="text-right">
+            200
+          </td>
+          <td class="text-right">
+            100
+          </td>
+          <td>
+            <span class="text-success">啟用</span>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-outline-primary btn-sm">編輯</button>
+              <button class="btn btn-outline-danger btn-sm">刪除</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+</table>
+</body>
+</html>
