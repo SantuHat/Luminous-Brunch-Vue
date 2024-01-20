@@ -363,7 +363,14 @@ if (window.location.href.includes('4-1_menu-salad.html') || window.location.href
         <div class="col-lg-4 mb-6">
             <div class="card-menu">
                 <div class="card-img">
+                  <a href="4-1-1_menu-detail.html">
                     <img src="${item.imgUrl}" alt="" class="card-img">
+                    <div class="d-grid imgAddCart m-3">
+                      <button class="btn btn-primary " type="button">
+                        加入購物車
+                      </button>
+                    </div>
+                  </a>
                 </div>
                 <div class="menu-title font-NotoSerif d-flex justify-content-between">
                     <span class="menu-name">${item.title}</span>
