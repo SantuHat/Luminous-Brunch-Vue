@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Order</title>
+</head>
+
+<body>
+  <%- include('./layout/header'); -%>
+    <!--  -->
+    <div class="container mb-9">
+      <div class="step-indicator mx-auto mt-5">
+        <div class="step active" id="step1"><span class="fs-3">確認訂單</span></div>
+        <div class="line"></div>
+        <div class="step" id="step2"><span class="fs-3">填寫資料</span></div>
+        <div class="line"></div>
+        <div class="step" id="step3"><span class="fs-3">完成訂單</span></div>
+      </div>
+    </div>
+    <!-- table -->
+    <div class="container mt-9 mb-9">
+      <table class="border border-gray box-shadow-gray-300 mx-auto w-100">
+        <thead class="bg-gray text-center position-relative">
+          <tr>
+            <!-- <div class="totalPrice position-absolute">總金額</div> -->
+            <th class="px-lg-6 py-lg-4" colspan="3">商品</th>
+            <th class="px-lg-6 py-lg-4">單價</th>
+            <th class="px-lg-6 py-lg-4">數量</th>
+            <th class="px-lg-6 py-lg-4">小計</th>
+            <th class="px-lg-6 py-lg-4"></th>
+            <th class="px-lg-6 py-lg-4">總金額</th>
+          </tr>
+        </thead>
+        <tbody class="js-tbody">
+          <tr>
+            <th width="12%">
+              <img
+                src="https://images.unsplash.com/photo-1627308595216-439c00ade0fe?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="me-2 toast-img" alt="...">
+            </th>
+            <th colspan="1">燻鮭魚酪梨開放三明治</th>
+            <th class="text-center" colspan="2">80</th>
+            <th class="text-center">
+              <button class="btn" type="button">-</button>
+              1
+              <button class="btn" type="button">+</button>
+            </th>
+            <th class="text-center">80</th>
+            <th>
+              <button type="button" class="btn btn-primary">
+                <span class="material-symbols-outlined">
+                  delete
+                </span>
+              </button>
+            </th>
+          </tr>
+          <tr>
+            <th width="12%">
+              <img
+                src="https://images.unsplash.com/photo-1627308595216-439c00ade0fe?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="me-2 toast-img" alt="...">
+            </th>
+            <th colspan="1">燻鮭魚酪梨開放三明治</th>
+            <th class="text-center" colspan="2">80</th>
+            <th class="text-center">
+              <button class="btn" type="button">-</button>
+              1
+              <button class="btn" type="button">+</button>
+            </th>
+            <th class="text-center">80</th>
+            <th>
+              <button type="button" class="btn btn-primary">
+                <span class="material-symbols-outlined">
+                  delete
+                </span>
+              </button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+
+      <a href="5-2_writeData.html" class="btn_reserve py-3 px-9 py-md-4 px-md-11 mx-auto mt-10">下一步</a>
+    </div>
+
+    <script type="module" src="../main.js"></script>
+</body>
+
+</html>

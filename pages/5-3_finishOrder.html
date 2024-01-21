@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Order</title>
+</head>
+
+<body>
+  <%- include('./layout/header'); -%>
+    <!--  -->
+    <div class="container mb-9">
+      <div class="step-indicator mx-auto mt-5">
+        <div class="step" id="step1"><span class="fs-3">確認訂單</span></div>
+        <div class="line"></div>
+        <div class="step" id="step2"><span class="fs-3">填寫資料</span></div>
+        <div class="line"></div>
+        <div class="step active" id="step3"><span class="fs-3">完成訂單</span></div>
+      </div>
+    </div>
+
+    <!-- 訂餐明細 -->
+    <h3 class="mb-7 mt-12 text-center text-gray-400 font-NotoSerif">訂餐明細</h3>
+    <div class="container mb-9">
+      <table class="border border-gray box-shadow-gray-300 mx-auto w-100">
+        <thead class="bg-gray text-center position-relative">
+          <tr>
+            <!-- <div class="totalPrice position-absolute">總金額</div> -->
+            <th class="px-lg-6 py-lg-4" colspan="3">商品</th>
+            <th class="px-lg-6 py-lg-4">單價</th>
+            <th class="px-lg-6 py-lg-4">數量</th>
+            <th class="px-lg-6 py-lg-4">小計</th>
+            <th class="px-lg-6 py-lg-4"></th>
+            <th class="px-lg-6 py-lg-4">總金額</th>
+          </tr>
+        </thead>
+        <tbody class="js-tbody">
+          <tr>
+            <th width="12%">
+              <img
+                src="https://images.unsplash.com/photo-1627308595216-439c00ade0fe?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="me-2 toast-img" alt="...">
+            </th>
+            <th colspan="1">燻鮭魚酪梨開放三明治</th>
+            <th class="text-center" colspan="2">80</th>
+            <th class="text-center">
+              1
+            </th>
+            <th class="text-center">80</th>
+
+          </tr>
+          <tr>
+            <th width="12%">
+              <img
+                src="https://images.unsplash.com/photo-1627308595216-439c00ade0fe?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="me-2 toast-img" alt="...">
+            </th>
+            <th colspan="1">燻鮭魚酪梨開放三明治</th>
+            <th class="text-center" colspan="2">80</th>
+            <th class="text-center">
+              1
+            </th>
+            <th class="text-center">80</th>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 訂餐人資料 -->
+      <h3 class="mb-7 mt-10 text-center text-gray-400 font-NotoSerif">訂餐人資料</h3>
+      <table class="border border-gray box-shadow-gray-300 mx-auto w-100">
+        <thead class="bg-gray text-center">
+          <tr>
+            <th class="px-lg-6 py-lg-4">姓名</th>
+            <th class="px-lg-6 py-lg-4">手機號碼</th>
+            <th class="px-lg-6 py-lg-4">信箱</th>
+          </tr>
+        </thead>
+        <tbody class="js-tbody">
+          <tr>
+            <th class="text-center p-5">
+              <input type="text" class="bg-transparent py-2 border-0 text-center" value="王大明">
+            </th>
+            <th class="text-center p-5">
+              <input type="text" class="bg-transparent py-2 border-0 text-center" value="0911345678">
+            </th>
+            <th class="text-center p-5">
+              <input type="text" class="bg-transparent py-2 border-0 text-center" value="abc@gmail.com">
+            </th>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 付款方式 -->
+      <h3 class="mb-5 mt-10 text-center text-gray-400 font-NotoSerif">付款方式</h3>
+      <select name="" id="" class="bg-transparent p-2 mx-auto d-block">
+        <option value="請選擇">請選擇</option>
+        <option value="到店取餐付款" selected>到店取餐付款</option>
+        <option value="信用卡">信用卡</option>
+      </select>
+
+      <div class="d-flex">
+        <a href="index.html" class="btn_reserve py-3 px-5 py-md-4 px-md-11 mx-auto mt-10">回首頁</a>
+        <a href="#" class="btn_reserve py-3 px-5 py-md-4 px-md-11 mx-auto mt-10">查看我的所有訂單</a>
+      </div>
+    </div>
+
+    <script type="module" src="../main.js"></script>
+</body>
+
+</html>
