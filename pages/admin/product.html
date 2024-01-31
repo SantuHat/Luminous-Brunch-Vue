@@ -8,65 +8,312 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
-    <div class="mx-auto px-3 w-75 d-flex ">
-      <a class="navbar-brand bg-white rounded-pill" href="#"><img src="/assets/images/Logo-sm.png" alt=""></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">產品</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">訂單</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">優惠券</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">登出</a>
-          </li>
-        </ul>
+<div id="app" class="container-fluid">
+  <navbar></navbar>
+  <div class="text-end me-3 mt-4 ">
+      <button class="btn btn-primary" type="button" @click="openModal('new')">產品新增</button>
+  </div>
+  <table class="table mt-4 ">
+      <thead>
+          <tr>
+              <th width="120">分類</th>
+              <th width="120">產品名稱</th>
+              <th width="120">原價</th>
+              <th width="120">售價</th>
+              <th width="100">是否啟用</th>
+              <th width="200">編輯</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr v-for="item in products" :key="item.id">
+            <td>{{item.category}}</td>
+            <td>{{item.title}}</td>
+            <td class="text-right">
+              {{item.origin_price}}
+            </td>
+            <td class="text-right">
+              {{item.price}}
+            </td>
+            <td>
+              <span class="text-success" v-if="item.is_enabled">啟用</span>
+              <span class="text-muted" v-else>未啟用</span>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-outline-primary btn-sm" @click="openModal('edit',item)">編輯</button>
+                <button class="btn btn-outline-danger btn-sm" @click="openModal('del',item)">刪除</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" :class="{disabled: !pages.has_pre}">
+        <a class="page-link" href="#" aria-label="Previous" @click.prevent="getProducts(pages.current_page-1)">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" :class="{active: page === pages.current_page}" v-for="page in pages.total_pages" :key="page + 123">
+        <a class="page-link" href="#" @click.prevent="getProducts(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" :class="{disabled: !pages.has_next}">
+        <a class="page-link" href="#" aria-label="Next"@click.prevent="getProducts(pages.current_page+1)">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- modal -->
+  <!-- <product-modal ref="myModal"></product-modal> -->
+  <!-- <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" :class="{'disabled': page.current_page === 1}">
+        <a class="page-link" href="#" aria-label="Previous"@click.prevent="updatePage(page.current_page - 1)">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" v-for="page in page.total_pages" :key="page" :class="{'active':page ===page.total_pages}">
+        <a class="page-link" href="#" @click.prevent="updatePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" :class="{'disabled': page.current_page === page.total_pages}">
+        <a class="page-link" href="#" aria-label="Next"  @click.prevent="updatePage(page.current_page + 1)">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav> -->
+  <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-dark text-white">
+          <h5 id="productModalLabel" class="modal-title">
+            <span>新增產品</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="mb-2">
+                <div class="mb-3">
+                  <label for="imageUrl" class="form-label">輸入圖片網址</label>
+                  <input type="text" class="form-control"
+                          placeholder="請輸入圖片連結">
+                </div>
+                <img class="img-fluid" src="" alt="">
+              </div>
+              <div>
+                <button class="btn btn-outline-primary btn-sm d-block w-100">
+                  新增圖片
+                </button>
+              </div>
+              <div>
+                <button class="btn btn-outline-danger btn-sm d-block w-100">
+                  刪除圖片
+                </button>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="mb-3">
+                <label for="title" class="form-label">標題</label>
+                <input id="title" type="text" class="form-control" placeholder="請輸入標題" v-model="temProduct.title">
+              </div>
+
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="category" class="form-label">分類</label>
+                  <input id="category" type="text" class="form-control" v-model="temProduct.category"
+                          placeholder="請輸入分類">
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">單位</label>
+                  <input id="unit" type="text" class="form-control" v-model="temProduct.unit" placeholder="請輸入單位">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="origin_price" class="form-label">原價</label>
+                  <input id="origin_price" type="number" min="0" class="form-control" v-model.number="temProduct.origin_price" placeholder="請輸入原價">
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="price" class="form-label">售價</label>
+                  <input id="price" type="number" min="0" class="form-control" v-model.number="temProduct.price"
+                          placeholder="請輸入售價">
+                </div>
+              </div>
+              <hr>
+
+              <div class="mb-3">
+                <label for="description" class="form-label">產品描述</label>
+                <textarea id="description" type="text" class="form-control" v-model="temProduct.description"
+                          placeholder="請輸入產品描述">
+                </textarea>
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">說明內容</label>
+                <textarea id="description" type="text" class="form-control" v-model="temProduct.content"
+                          placeholder="請輸入說明內容">
+                </textarea>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input id="is_enabled" class="form-check-input" type="checkbox"
+                          :true-value="1" :false-value="0" v-model="temProduct.is_enabled">
+                  <label class="form-check-label" for="is_enabled">是否啟用</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-primary" @click="updateProduct">
+            確認
+          </button>
+        </div>
       </div>
     </div>
-</nav>
-<div class="text-end me-3 mt-4">
-    <button class="btn btn-primary" type="button">產品新增</button>
+  </div>
+
+  <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
+           aria-labelledby="delProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-danger text-white">
+          <h5 id="delProductModalLabel" class="modal-title">
+            <span>刪除產品</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          是否刪除
+          <strong class="text-danger">{{ temProduct.title}}</strong> 商品(刪除後將無法恢復)。
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-danger" @click="dleProduct()">
+            確認刪除
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<table class="table mt-4">
-    <thead>
-        <tr>
-            <th width="120">分類</th>
-            <th width="120">產品名稱</th>
-            <th width="120">原價</th>
-            <th width="120">售價</th>
-            <th width="100">是否啟用</th>
-            <th width="200">編輯</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>分類</td>
-          <td>標題</td>
-          <td class="text-right">
-            200
-          </td>
-          <td class="text-right">
-            100
-          </td>
-          <td>
-            <span class="text-success">啟用</span>
-          </td>
-          <td>
-            <div class="btn-group">
-              <button class="btn btn-outline-primary btn-sm">編輯</button>
-              <button class="btn btn-outline-danger btn-sm">刪除</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-</table>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js'
+      integrity='sha512-Xk3wWei2TGrsh9kDSBKUMIjw/86sLUvhtnv9f7fOuIwhhiUTKz8szkWkzHthrM5Bb3Bu9idSzkxOrkzhcneuiw=='
+      crossorigin='anonymous'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.min.js"></script>
+<script type="module">
+import navbar from'./components/navbar.js';
+// import productModal from'/components/productModal.js';
+    const {createApp} = Vue
+    const app = createApp({
+      
+    data(){
+        return{
+          products:[],
+          apiUrl: 'https://vue3-course-api.hexschool.io/v2',
+          apiPath: 'shuo-api',
+          myModal:"",
+          modalDel: "",
+          temProduct:{},
+          pages:{},
+          isNew:false,
+        }
+    },
+    components:{
+      navbar,
+      // productModal,
+    },
+    methods:{
+      getProducts(page = 1){ //參數預設值
+        const url = `${this.apiUrl}/api/${this.apiPath}/admin/products?page=${page}`
+        axios.get(url)
+          .then((res)=>{
+            this.products = res.data.products;
+            this.pages = res.data.pagination;
+             console.log(res)
+          })
+      },
+      updateProduct(){
+        // 新增
+        let api = `${this.apiUrl}/api/${this.apiPath}/admin/product`;
+        let method='post'
+        // 更新
+        if(!this.isNew){
+          api = `${this.apiUrl}/api/${this.apiPath}/admin/product/${this.temProduct.id}`
+          method = 'put';
+        }
+        axios[method](api,{data:this.temProduct})
+          .then((res) =>{
+            this.getProducts();
+            this.hideModal();
+            this.temProduct = {};
+          }).catch((err) => {
+                     alert(err.data.message);
+                  })
+      },
+      dleProduct(){
+        const url = `${this.apiUrl}/api/${this.apiPath}/admin/product/${this.temProduct.id}`
+        axios.delete(url)
+          .then((res)=>{
+            this.getProducts()
+            this.modalDel.hide();
+          })
+      },
+      // 驗證是否登入(未登入跳轉至登入頁面)
+      check(){
+        const url = `${this.apiUrl}/api/user/check`;
+        axios.post(url)
+        .then((res) =>{
+          if(!res.data.success){
+            window.location = 'login.html';
+          }
+        })
+        .catch(() =>{
+          window.location = 'login.html';
+        })
+      },
+      openModal(item , product){
+        if( item ==='new'){
+          this.temProduct = {}
+          this.isNew = true
+          this.myModal.show();
+        }
+        else if(item === 'edit'){
+          this.temProduct = { ...product};
+          this.isNew = false
+          this.myModal.show();
+        }else if(item ==='del'){
+          this.temProduct = { ...product};
+          this.modalDel.show();
+        }
+        
+      },
+      hideModal(){
+        this.myModal.hide()
+      }
+
+    },
+    mounted(){
+      // 驗證登入
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1'); 
+      axios.defaults.headers.common.Authorization = token;
+      this.myModal = new bootstrap.Modal(this.$refs.productModal);
+      this.modalDel = new bootstrap.Modal(this.$refs.delProductModal);
+      this.getProducts()
+    },
+});
+app.mount('#app')
+</script>
 </body>
 </html>
