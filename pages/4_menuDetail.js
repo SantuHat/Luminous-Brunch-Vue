@@ -1,5 +1,4 @@
 
-
 // Initialize Swiper 
 const menuDetailswiper = new Swiper(".menuDetailswiper", {
     slidesPerView: 3,

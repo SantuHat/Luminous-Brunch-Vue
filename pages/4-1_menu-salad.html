@@ -6,6 +6,8 @@
     <title>菜單分頁</title>
 </head>
 <body>
+  <!-- Vue 開發版 -->
+<div id="app">
 <%- include('./layout/header'); -%>
   <div class="py-6">
     <div class="container">
@@ -18,7 +20,8 @@
     <div class="container">
         <div class="menu-container row flex-wrap">
         <!-- JS渲染菜單品項 -->
-            
+        {{ apiData }}
+          <meal-card></meal-card> 
         </div>
     </div> 
   </div>
@@ -26,10 +29,17 @@
 
 <%- include('./layout/footer'); -%>
 
-  
+
+
+    <!-- Vue End -->
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
  <script type="module" src="../main.js"></script>
  <script>
-    renderMenu(menuData[param1Value]);
+    // renderMenu(menuData[param1Value]);
+
  </script>
 </body>
 </html>
