@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>菜單分頁</title>
   <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/modulepreload-polyfill-3cfb730f.js"></script>
-  <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/main-8ca0603e.js"></script>
+  <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/main-29fab3c8.js"></script>
   <link rel="stylesheet" href="/Luminous-Brunch-Vue/assets/main-d61c647b.css">
 </head>
 <body>
+  <!-- Vue 開發版 -->
+<div id="app">
 <header class="position-relative bg-light">
   <nav class="nav">
     <div class="container-lg d-flex justify-content-between align-items-center py-5">
@@ -157,7 +159,8 @@
     <div class="container">
         <div class="menu-container row flex-wrap">
         <!-- JS渲染菜單品項 -->
-            
+        {{ apiData }}
+          <meal-card></meal-card> 
         </div>
     </div> 
   </div>
@@ -228,10 +231,17 @@
   </div>
 </footer>
 
-  
+
+
+    <!-- Vue End -->
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
  
  <script>
-    renderMenu(menuData[param1Value]);
+    // renderMenu(menuData[param1Value]);
+
  </script>
 </body>
 </html>
