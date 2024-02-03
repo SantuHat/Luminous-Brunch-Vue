@@ -37,7 +37,7 @@
             <td>
               <div class="btn-group">
                 <button class="btn btn-outline-primary btn-sm" @click="openMyCoupon('edit',item)">編輯</button>
-                <button class="btn btn-outline-danger btn-sm"@click="openMyCoupon('del',item)">刪除</button>
+                <button class="btn btn-outline-danger btn-sm" @click="openMyCoupon('del',item)">刪除</button>
               </div>
             </td>
           </tr>
@@ -63,7 +63,7 @@
           </div>
           <div class="mb-3">
             <label for="coupon_code">優惠碼</label>
-            <input type="text" class="form-control" id="coupon_code"v-model="temCoupons.code"
+            <input type="text" class="form-control" id="coupon_code" v-model="temCoupons.code"
                    placeholder="請輸入優惠碼">
           </div>
           <div class="mb-3">
@@ -130,10 +130,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.esm-browser.js"></script>
 <script type="module">
-  import navbar from'./components/navbar.js'
+  import navbar from'./navbar.js'
   const {createApp} = Vue
   const apiUrl = 'https://vue3-course-api.hexschool.io/v2';
-  const apiPath = 'shuo-api';
+  const apiPath = 'luminous';
   const app = createApp({    
   data(){
       return{
