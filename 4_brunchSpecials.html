@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MENU</title>
     <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/modulepreload-polyfill-3cfb730f.js"></script>
-    <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/main-29fab3c8.js"></script>
+    <script type="module" crossorigin src="/Luminous-Brunch-Vue/assets/main-7b06997b.js"></script>
     <link rel="stylesheet" href="/Luminous-Brunch-Vue/assets/main-d61c647b.css">
   </head>
   <body>
@@ -162,7 +162,7 @@
   </div>
 </div>
     </div>
-       
+  <add-Cart-Toast ref="addCartToast"></add-Cart-Toast>
   <!-- 健康能量餐 -->
   <div class="bg-salad d-flex align-items-center py-7 mb-6 mb-lg-0">
     
@@ -171,7 +171,7 @@
         <div class="col-lg-5">
           <div class="">
             <div class="text-center py-6">
-              <h2 class="fw-bold font-NotoSerif mb-6">{{ this.meal.theme }}</h2>
+              <h2 class="fw-bold font-NotoSerif mb-6">| 健 人 高 蛋 白 推 薦 |</h2>
               <p class="fs-5">我們提供多樣化的健康餐選擇，精選含有30g以上的蛋白質的熱門餐點，適合運動後需要快速補充營養的你</p>
               <div class="m-5 brunch-menu-bg">
                 <div class="d-flex  justify-content-between w-100">
@@ -426,14 +426,42 @@
   </div>
 </footer>
   <!--Vue End -->  
-  </div>
+    </div>
     
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js'
       integrity='sha512-Xk3wWei2TGrsh9kDSBKUMIjw/86sLUvhtnv9f7fOuIwhhiUTKz8szkWkzHthrM5Bb3Bu9idSzkxOrkzhcneuiw=='
       crossorigin='anonymous'></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+            integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.esm-browser.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     
+    <!-- <script type="module">
+     const {createApp} = Vue;
+     const app = Vue.createApp({
+  data(){
+    return{
+        meal:[
+            {
+                theme:'| 健 康 能 量 餐 |',
+                descripton:'我們提供多樣化的健康餐選擇，精選含有30g以上的蛋白質的熱門餐點，適合運動後需要快速補充營養的你',
+                meals:['鮭魚鮮蔬沙拉碗','義式牛肉寬管麵']
+            
+            }
+        ]
+    }
+  },
+  mounted(){
+    console.log('hello')
+  },
+  methods:{
 
+  }
+
+});
+app.mount('#app');
+
+    </script> -->
   </body>
 </html>
