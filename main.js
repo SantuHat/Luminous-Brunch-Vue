@@ -14,7 +14,7 @@ import './pages/4_menuDetail.js'
 import './pages/MealData.js'
 
 import { createApp } from 'vue'
-import App from './App.vue'
+// import App from './App.vue'
 // import router from './router.js'
 
 const app = createApp(App)
