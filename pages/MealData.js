@@ -1,7 +1,7 @@
 // Vue
-const { createApp } = Vue;
 
-const app = createApp({
+
+const app = Vue.createApp({
   data(){
     return{
         meal:[
@@ -15,7 +15,7 @@ const app = createApp({
     }
   },
   mounted(){
-    console.log(Vue)
+    
   },
   methods:{
 

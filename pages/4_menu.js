@@ -1,6 +1,6 @@
 // vite 打包圖片
 import tunasalad from "../assets/images/menuImg/tunasalad.jpg";
-
+import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 // 資料結構
 // title,
 // price,
@@ -89,16 +89,15 @@ const mealCard = {
     return{
       hexUrl : 'https://ec-course-api.hexschool.io/v2',
       apiPath: 'luminous',
-      
       apiData :{}
       
     }
   },
   mounted(){
     // 先登入
-    this.login()
-    // 後驗證
-    this.adminCheck()
+    // this.login()
+    // // 後驗證
+    // this.adminCheck()
     // 手動加入產品
     // this.postProducts()
     // axios.get(url)
@@ -140,7 +139,7 @@ const mealCard = {
       });
     },
     getProducts(){
-      axios.get(`${this.hexUrl}/api/${this.apiPath}/admin/products/all`)
+      axios.get(`${this.hexUrl}/api/${this.apiPath}/products/all`)
         .then((Response)=>{
           this.apiData = Response.data.products;
           console.log(this.apiData)
@@ -214,9 +213,66 @@ const mealCard = {
         </div>
   `
 };
-const app = Vue.createApp({
-  components:{},
+const addCartToast = {
+  data(){
+    return {
+      addCartToast:null
+    }
+  },
   mounted(){
+    this.addCartToast = new bootstrap.Toast(this.$refs.addCartToast)
+    console.log(this.addCartToast);
+    this.addCartToast.show()
+  },
+  methods:{
+    show(){
+      this.addCartToast.addEventListener('hidden.bs.toast', () => {
+        console.log("hsoe",this.$refs.addCartToast)
+      })
+      
+    }
+  },
+  template:
+  /*html */
+  `
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast " role="alert" aria-live="assertive" aria-atomic="true" ref="addCartToast">
+          <div class="toast-header">
+            <span class="material-symbols-outlined">
+                shopping_cart
+            </span>
+            <strong class="d-flex align-item-center  me-auto fs-4">
+                購物車
+            </strong>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body d-flex align-item-center justify-content-between">
+            <img src="https://images.unsplash.com/photo-1627308595216-439c00ade0fe?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  class="rounded me-2 toast-img" alt="...">
+            <div class="d-flex flex-column justify-content-center">
+                <p class="fs-5">燻鮭魚酪梨開放三明治 </p>
+                <p>80 $</p>
+            </div>
+            <button type="button" class="btn btn-primary" >
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+          </div>
+        </div>
+</div>
+  `
+};
+const app = createApp({
+  components:{},
+  data(){
+    return{
+      apiData:{},
+      
+    }
+  },
+  mounted(){
+    
     
   },
   methods:{
@@ -227,7 +283,8 @@ const app = Vue.createApp({
   }
 
 })
-app.component('mealCard',mealCard)
+app.component('mealCard', mealCard);
+app.component('addCartToast', addCartToast);
 app.mount('#app');
 
 
